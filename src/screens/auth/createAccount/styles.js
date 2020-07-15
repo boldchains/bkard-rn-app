@@ -7,10 +7,8 @@ const styles = StyleSheet.create({
         backgroundColor: "black"
     },
     scrollContainerSecond: {
-        flex: 1,
         paddingHorizontal: 16,
-        alignItems: "center",
-        justifyContent: "space-between"
+        alignItems: "center"
     },
     headerContainer: {
         width: "100%",
@@ -24,40 +22,76 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "flex-start",
     },
+    textContainer: {
+        backgroundColor: "green",
+        alignItems: "center",
+        alignContent: "center",
+        justifyContent: "center",
+    },
     headerText: {
         color: "white",
         fontSize: 18,
         fontWeight: "600",
-        marginTop: 10
     },
-    message: {
-        color: "white",
-        fontSize: 17,
-        marginTop: 52
+    imagePlus: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        backgroundColor: "#1c1c1e",
+        position: "absolute",
+        right: 26,
+        bottom: 10,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    avatar: {
+        width: 160,
+        height: 160,
+        borderRadius: 80
+    },
+    logo: {
+        width: 213,
+        height: 198,
+    },
+    appName: {
+        color: "#ffffff",
+        fontSize: 30,
+        marginTop: 6,
+        marginBottom: 47
     },
     textInput: {
         backgroundColor: "#1c1c1e",
         width: "100%",
-        marginTop: 32,
+        marginTop: 8,
         paddingVertical: 19,
         paddingHorizontal: 24,
         borderRadius: 10,
         color: "white",
         fontSize: 17
     },
-    forgotPasswordContainer: {
-        alignSelf: "flex-end",
-        marginTop: 18
+    privacyPolicyContainer: {
+        paddingHorizontal: 25,
+        flexDirection: "row",
+        marginTop: 23,
     },
-    forgotPasswordText: {
+    privacyPolicyCheckButton: {
+        width: 20,
+        height: 20,
+        backgroundColor: "#222222",
+        borderRadius: 4,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    privacyPolicyText: {
         color: "#ffffff",
         opacity: 0.3,
-        fontSize: 14
+        fontSize: 14,
+        marginLeft: 13
     },
     button: {
         width: "100%",
         height: 48,
-        marginTop: 48,
+        marginVertical: 48,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 25
@@ -79,6 +113,19 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 25
+    },
+    birtdateInput: {
+        width: "100%",
+        //height: 30,
+        backgroundColor: "#1c1c1e",
+        borderRadius: 10,
+        marginTop: 8,
+        paddingVertical: 19,
+        paddingHorizontal: 24,
+    },
+    birthdateText: {
+        color: "white",
+        fontSize: 17
     }
 });
 

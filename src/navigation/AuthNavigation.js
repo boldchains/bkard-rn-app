@@ -7,6 +7,8 @@ import Login from '../screens/auth/login';
 import ForgotPassword from '../screens/auth/forgotPassword';
 import ConfirmCode from '../screens/auth/confirmCode';
 import ChangePassword from '../screens/auth/changePassword';
+import SignUp from '../screens/auth/signUp';
+import CreateAccount from '../screens/auth/createAccount';
 
 function AuthNavigation() {
   return (
@@ -15,6 +17,8 @@ function AuthNavigation() {
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="ConfirmCode" component={ConfirmCode} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="CreateAccount" component={CreateAccount} />
     </Stack.Navigator>
   );
 }

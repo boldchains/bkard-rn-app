@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-//import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import styles from './styles';
 
@@ -22,7 +22,17 @@ export default class ConfirmCode extends React.Component {
                     contentContainerStyle={styles.scrollContainerSecond}>
 
                     <View style={{ width: "100%", alignItems: "center" }}>
-                        <Text style={styles.headerText}>Confirm Code</Text>
+
+                        <View style={styles.headerContainer}>
+                            <View style={{ position: "absolute", left: 0 }}>
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.goBack()}
+                                    style={styles.backButton}>
+                                    <Icon name="keyboard-arrow-left" size={30} color="white" />
+                                </TouchableOpacity>
+                            </View>
+                            <Text style={styles.headerText}>Confirm Code</Text>
+                        </View>
                         <Text style={styles.message}>Enter your email address and we will send you a verification code to reset your email.</Text>
                         <TextInput
                             value={this.state.email}

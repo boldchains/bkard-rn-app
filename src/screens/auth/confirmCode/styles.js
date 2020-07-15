@@ -12,6 +12,18 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between"
     },
+    headerContainer: {
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10
+    },
+    backButton: {
+        width: 30,
+        height: 30,
+        justifyContent: "center",
+        alignItems: "flex-start",
+    },
     headerText: {
         color: "white",
         fontSize: 18,

@@ -36,15 +36,17 @@ export default class Login extends React.Component {
           <TextInput
             value={this.state.password}
             onChangeText={password => this.setState({ password })}
+            secureTextEntry={true}
             placeholder="Password"
             placeholderTextColor="white"
             style={styles.textInput} />
-          <View style={styles.forgotPasswordContainer}>
-            <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
-
-          </View>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("ForgotPassword")}
+            style={styles.forgotPasswordContainer}>
+            <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            //onPress={() => this.props.navigation.navigate("ForgotPassword")}
             style={{ width: "100%" }}>
             <LinearGradient
               start={{ x: 0, y: 0 }}
@@ -55,7 +57,9 @@ export default class Login extends React.Component {
             </LinearGradient>
           </TouchableOpacity>
           <Text style={styles.dontHaveAccountText}>Don't have an account?</Text>
-          <TouchableOpacity style={{ width: "100%" }}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("SignUp")}
+            style={{ width: "100%" }}>
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
