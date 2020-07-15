@@ -1,15 +1,30 @@
 import { StyleSheet } from 'react-native';
-//import config from 'config';
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
+  },
+  scrollContainer: {
+    backgroundColor: "black"
+  },
+  scrollContainerSecond: {
     paddingHorizontal: 16,
-    backgroundColor: '#000000',
     alignItems: "center"
+  },
+  headerText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "600",
+    marginTop: 10
+  },
+  logo: {
+    width: 213,
+    height: 198,
   },
   appName: {
     color: "#ffffff",
-    fontSize: 30
+    fontSize: 30,
+    marginTop: 6,
+    marginBottom: 47
   },
   textInput: {
     backgroundColor: "#1c1c1e",
@@ -30,18 +45,31 @@ const styles = StyleSheet.create({
     opacity: 0.3,
     fontSize: 14
   },
-  loginButton: {
+  button: {
     width: "100%",
+    height: 48,
     marginTop: 48,
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 14,
-    backgroundColor: "red",
     borderRadius: 25
   },
-  loginButtonText: {
+  buttonText: {
     color: "white",
     fontWeight: "600"
+  },
+  dontHaveAccountText: {
+    color: "white",
+    fontSize: 17,
+    fontWeight: "500",
+    marginTop: 53
+  },
+  signUpButton: {
+    width: "98.7%",
+    height: 45.5,
+    backgroundColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 25
   }
 });
 

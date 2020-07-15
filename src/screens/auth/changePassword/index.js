@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StatusBar } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 //import Icon from 'react-native-vector-icons/Ionicons'
 
 import styles from './styles';
 
-export default class ForgotPassword extends React.Component {
+export default class ChangePassword extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            email: "",
+            password: "",
+            confirmPassword: "",
         }
     }
 
@@ -22,25 +23,31 @@ export default class ForgotPassword extends React.Component {
                     contentContainerStyle={styles.scrollContainerSecond}>
 
                     <View style={{ width: "100%", alignItems: "center" }}>
-                        <Text style={styles.headerText}>Forgot password</Text>
-                        <Text style={styles.message}>Enter your email address and we will send you a verification code to reset your email.</Text>
+                        <Text style={styles.headerText}>Change Password</Text>
+                        <Text style={styles.message}>Enter your new password and confirm.</Text>
                         <TextInput
                             value={this.state.email}
-                            onChangeText={email => this.setState({ email })}
-                            placeholder="Email Address"
+                            onChangeText={password => this.setState({ password })}
+                            placeholder="New Password"
                             placeholderTextColor="white"
                             style={styles.textInput} />
+                        <TextInput
+                            value={this.state.email}
+                            onChangeText={confirmPassword => this.setState({ confirmPassword })}
+                            placeholder="Confirm Password"
+                            placeholderTextColor="white"
+                            style={[styles.textInput, { marginTop: 8 }]} />
                     </View>
 
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate("ConfirmCode")}
+                        //onPress={() => this.props.navigation.navigate("ForgotPassword")}
                         style={{ width: "100%", marginBottom: 50 }}>
                         <LinearGradient
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             colors={['#ed733d', '#ea465b', '#db3022']}
                             style={styles.button}>
-                            <Text style={styles.buttonText}>COUNTINUE</Text>
+                            <Text style={styles.buttonText}>CONFIRM</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                 </ScrollView>
