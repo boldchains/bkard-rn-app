@@ -46,7 +46,7 @@ export default class Login extends React.Component {
             <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            //onPress={() => this.props.navigation.navigate("ForgotPassword")}
+            onPress={() => this.props.navigation.navigate("User")}
             style={{ width: "100%" }}>
             <LinearGradient
               start={{ x: 0, y: 0 }}

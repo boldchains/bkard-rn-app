@@ -10,6 +10,8 @@ import ChangePassword from '../screens/auth/changePassword';
 import SignUp from '../screens/auth/signUp';
 import CreateAccount from '../screens/auth/createAccount';
 
+import User from './UserStackNavigator';
+
 function AuthNavigation() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -19,6 +21,7 @@ function AuthNavigation() {
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="CreateAccount" component={CreateAccount} />
+      <Stack.Screen name="User" component={User} />
     </Stack.Navigator>
   );
 }

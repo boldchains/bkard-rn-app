@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StatusBar }
 import ImagePicker from 'react-native-image-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
 
@@ -144,14 +144,8 @@ export default class CreateAccount extends React.Component {
                         style={styles.birtdateInput}>
                         <Text style={styles.birthdateText}>{this.parseDate()}</Text>
                     </TouchableOpacity>
-                    {/* <TextInput
-                        value={this.state.birthdate}
-                        onChangeText={birthdate => this.setState({ birthdate })}
-                        placeholder="Birthdate"
-                        placeholderTextColor="white"
-                        style={styles.textInput} /> */}
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate("Login")}
+                        onPress={() => this.props.navigation.navigate("User")}
                         style={{ width: "100%" }}>
                         <LinearGradient
                             start={{ x: 0, y: 0 }}
