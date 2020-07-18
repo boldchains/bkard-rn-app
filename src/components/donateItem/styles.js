@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: "#1c1c1e",
         paddingHorizontal: 16,
-        paddingTop: 16
+        paddingTop: 16,
+        marginBottom: 16
     },
     avatarNameContainer: {
         flexDirection: "row",

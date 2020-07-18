@@ -23,35 +23,50 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         marginTop: 10
     },
-    collapseMenuContainer: {
-        marginLeft: 50
-    },
-    optionsContainer: {
-        marginVertical: 45,
-        paddingHorizontal: 10
-    },
-    optionsItem: {
+    nameContainer: {
+        marginTop: 45,
         flexDirection: "row",
         alignItems: "center"
     },
-    optionsItemIcon: {
-        width: 40,
-        alignItems: "center"
+    text: {
+        color: "white",
+        fontSize: 17,
+        marginLeft: 10
     },
-    optionsItemButton: {
+    inputField: {
         flex: 1,
-        paddingVertical: 15,
+        color: "white",
+        fontSize: 17,
         borderBottomWidth: 1,
         borderColor: "#656565"
     },
-    optionsItemButtonText: {
+    contactInfoContainer: {
+        marginTop: 24
+    },
+    contactInfoText: {
         color: "white",
         fontSize: 17,
-        marginTop: 30
+        fontWeight: "600",
+        marginLeft: 10
     },
-    menuButtonItem: {
-        marginTop: 30,
+    phoneContainer: {
+        marginTop: 32,
+        borderBottomWidth: 1,
+        borderColor: "#656565",
+        flexDirection: "row",
+        paddingBottom: 15,
+        paddingHorizontal: 10
+    },
+    phoneButton: {
+        width: 24,
+        height: 24,
+        borderRadius: 12,
         justifyContent: "center",
+        alignItems: "center"
+    },
+    addPhoneContainer: {
+        paddingLeft: 10,
+        flexDirection: "row",
         alignItems: "center"
     }
 });

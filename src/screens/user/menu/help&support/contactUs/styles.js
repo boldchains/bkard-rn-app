@@ -1,0 +1,33 @@
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "black"
+    },
+    headerContainer: {
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10
+    },
+    backButton: {
+        width: 30,
+        height: 30,
+        justifyContent: "center",
+        alignItems: "flex-start",
+    },
+    headerText: {
+        color: "white",
+        fontSize: 18,
+        fontWeight: "600",
+    },
+    emailText: {
+        color: "white",
+        fontSize: 17,
+        marginLeft: 10,
+        marginTop: 20
+    }
+});
+
+export default styles;

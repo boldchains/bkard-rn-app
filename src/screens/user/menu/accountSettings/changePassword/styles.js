@@ -21,38 +21,25 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 18,
         fontWeight: "600",
-        marginTop: 10
     },
-    collapseMenuContainer: {
-        marginLeft: 50
+    saveButtonContainer: {
+        position: "absolute",
+        right: 10
     },
-    optionsContainer: {
-        marginVertical: 45,
-        paddingHorizontal: 10
+    saveButtonText: {
+        fontSize: 17,
+        color: "rgb(90,145,247)"
     },
-    optionsItem: {
-        flexDirection: "row",
-        alignItems: "center"
+    passwordContainer: {
+        marginTop: 35
     },
-    optionsItemIcon: {
-        width: 40,
-        alignItems: "center"
-    },
-    optionsItemButton: {
-        flex: 1,
-        paddingVertical: 15,
+    inputField: {
         borderBottomWidth: 1,
-        borderColor: "#656565"
-    },
-    optionsItemButtonText: {
+        borderColor: "#656565",
+        paddingVertical: 15,
         color: "white",
         fontSize: 17,
-        marginTop: 30
-    },
-    menuButtonItem: {
-        marginTop: 30,
-        justifyContent: "center",
-        alignItems: "center"
+        paddingLeft: 10
     }
 });
 

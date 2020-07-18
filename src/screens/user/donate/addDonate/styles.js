@@ -94,9 +94,12 @@ const styles = StyleSheet.create({
         color: "#98989f",
         fontSize: 16,
         marginLeft: 16,
-        marginRight: 5
+        marginRight: 5,
+        marginTop: -3
     },
     noteInputField: {
+        //backgroundColor: "red",
+        textAlignVertical: "center",
         flex: 1,
         color: "#98989f",
         fontSize: 16,

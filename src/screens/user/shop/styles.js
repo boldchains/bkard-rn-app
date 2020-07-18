@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     soldText: {
         color: "white",
         fontWeight: "500",
-        fontSize: 13
+        fontSize: 8
     }
 });
 

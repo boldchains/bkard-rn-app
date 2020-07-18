@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
     bodyContainer: {
-        //minHeight: 450,
         backgroundColor: "#1c1c1e",
         borderRadius: 10,
         marginTop: 8,
