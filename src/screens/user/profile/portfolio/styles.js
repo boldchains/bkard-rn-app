@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "black"
+        backgroundColor: "black",
     },
     headerContainer: {
         width: "100%",
@@ -20,8 +20,7 @@ const styles = StyleSheet.create({
     headerText: {
         color: "white",
         fontSize: 18,
-        fontWeight: "600",
-        marginTop: 10
+        fontWeight: "600"
     },
     menuContainer: {
         position: "absolute",

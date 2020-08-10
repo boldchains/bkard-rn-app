@@ -3,6 +3,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  safeAreaContainer: {
+    flex: 1,
+    backgroundColor: "#000000"
+  },
   scrollContainer: {
     backgroundColor: "black"
   },

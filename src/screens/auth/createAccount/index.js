@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StatusBar } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StatusBar, SafeAreaView, KeyboardAvoidingView, Platform } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import LinearGradient from 'react-native-linear-gradient';
@@ -80,83 +80,89 @@ export default class CreateAccount extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <StatusBar backgroundColor="#000000" />
-                <ScrollView
-                    style={styles.scrollContainer}
-                    contentContainerStyle={styles.scrollContainerSecond}>
-                    <View style={styles.headerContainer}>
-                        <View style={{ position: "absolute", left: 0 }}>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.goBack()}
-                                style={styles.backButton}>
-                                <Icon name="keyboard-arrow-left" size={30} color="white" />
-                            </TouchableOpacity>
-                        </View>
-                        <Text style={styles.headerText}>Create Account</Text>
-                    </View>
-                    {this.state.datePicker ?
-                        <DateTimePicker
-                            testID="dateTimePicker"
-                            value={this.state.date}
-                            mode={"date"}
-                            is24Hour={true}
-                            display="default"
-                            onChange={(event, selectedDate) => this.onChange(event, selectedDate)}
-                        /> : null
-                    }
-
-
-                    {this.state.imageUri === "" ?
-                        <View>
-                            <Icon name="account-circle" size={150} color="#1c1c1e" style={{ margin: 0 }} />
-                            <View style={styles.imagePlus}>
-                                <TouchableOpacity
-                                    onPress={() => this.pickImage()}>
-                                    <Icon name="add" size={30} color="grey" />
-                                </TouchableOpacity>
+            <SafeAreaView style={styles.safeAreaContainer}>
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === "ios" ? "padding" : null}
+                    style={styles.container}>
+                    <View style={styles.container}>
+                        <StatusBar backgroundColor="#000000" />
+                        <ScrollView
+                            style={styles.scrollContainer}
+                            contentContainerStyle={styles.scrollContainerSecond}>
+                            <View style={styles.headerContainer}>
+                                <View style={{ position: "absolute", left: 0 }}>
+                                    <TouchableOpacity
+                                        onPress={() => this.props.navigation.goBack()}
+                                        style={styles.backButton}>
+                                        <Icon name="keyboard-arrow-left" size={30} color="white" />
+                                    </TouchableOpacity>
+                                </View>
+                                <Text style={styles.headerText}>Create Account</Text>
                             </View>
-                        </View> :
-                        <Image
-                            style={styles.avatar}
-                            source={{ uri: this.state.imageUri }} />}
+                            {this.state.datePicker ?
+                                <DateTimePicker
+                                    testID="dateTimePicker"
+                                    value={this.state.date}
+                                    mode={"date"}
+                                    is24Hour={true}
+                                    display="default"
+                                    onChange={(event, selectedDate) => this.onChange(event, selectedDate)}
+                                /> : null
+                            }
 
-                    <TextInput
-                        value={this.state.username}
-                        onChangeText={username => this.setState({ username })}
-                        placeholder="Username"
-                        placeholderTextColor="white"
-                        style={[styles.textInput, { marginTop: 84 }]} />
-                    <TextInput
-                        value={this.state.address}
-                        onChangeText={address => this.setState({ address })}
-                        placeholder="Address"
-                        placeholderTextColor="white"
-                        style={styles.textInput} />
-                    <TextInput
-                        value={this.state.phoneNumber}
-                        onChangeText={phoneNumber => this.setState({ phoneNumber })}
-                        placeholder="Phone number"
-                        placeholderTextColor="white"
-                        style={styles.textInput} />
-                    <TouchableOpacity
-                        onPress={() => this.setState({ datePicker: true })}
-                        style={styles.birtdateInput}>
-                        <Text style={styles.birthdateText}>{this.parseDate()}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate("User")}
-                        style={{ width: "100%" }}>
-                        <LinearGradient
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            colors={['#ed733d', '#ea465b', '#db3022']}
-                            style={styles.button}>
-                            <Text style={styles.buttonText}>SAVE</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </ScrollView>
-            </View >
+
+                            {this.state.imageUri === "" ?
+                                <View>
+                                    <Icon name="account-circle" size={150} color="#1c1c1e" style={{ margin: 0 }} />
+                                    <View style={styles.imagePlus}>
+                                        <TouchableOpacity
+                                            onPress={() => this.pickImage()}>
+                                            <Icon name="add" size={30} color="grey" />
+                                        </TouchableOpacity>
+                                    </View>
+                                </View> :
+                                <Image
+                                    style={styles.avatar}
+                                    source={{ uri: this.state.imageUri }} />}
+
+                            <TextInput
+                                value={this.state.username}
+                                onChangeText={username => this.setState({ username })}
+                                placeholder="Username"
+                                placeholderTextColor="white"
+                                style={[styles.textInput, { marginTop: 84 }]} />
+                            <TextInput
+                                value={this.state.address}
+                                onChangeText={address => this.setState({ address })}
+                                placeholder="Address"
+                                placeholderTextColor="white"
+                                style={styles.textInput} />
+                            <TextInput
+                                value={this.state.phoneNumber}
+                                onChangeText={phoneNumber => this.setState({ phoneNumber })}
+                                placeholder="Phone number"
+                                placeholderTextColor="white"
+                                style={styles.textInput} />
+                            <TouchableOpacity
+                                onPress={() => this.setState({ datePicker: true })}
+                                style={styles.birtdateInput}>
+                                <Text style={styles.birthdateText}>{this.parseDate()}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("User")}
+                                style={{ width: "100%" }}>
+                                <LinearGradient
+                                    start={{ x: 0, y: 0 }}
+                                    end={{ x: 1, y: 0 }}
+                                    colors={['#ed733d', '#ea465b', '#db3022']}
+                                    style={styles.button}>
+                                    <Text style={styles.buttonText}>SAVE</Text>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                        </ScrollView>
+                    </View >
+                </KeyboardAvoidingView>
+            </SafeAreaView>
         );
     }
 }

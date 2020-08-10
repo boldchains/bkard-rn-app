@@ -20,8 +20,7 @@ const styles = StyleSheet.create({
     headerText: {
         color: "white",
         fontSize: 18,
-        fontWeight: "600",
-        marginTop: 10
+        fontWeight: "600"
     },
     recentPurchasesItemContainer: {
         marginHorizontal: 20,

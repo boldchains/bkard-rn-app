@@ -17,9 +17,10 @@ const styles = StyleSheet.create({
     modalMenuButton: {
         backgroundColor: "blue"
     },
-
-
-
+    safeAreaContainer: {
+        flex: 1,
+        backgroundColor: "#000000"
+    },
     headerContainer: {
         flexDirection: "row",
         marginTop: 5

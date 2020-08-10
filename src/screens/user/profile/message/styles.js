@@ -4,6 +4,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    safeAreaContainer: {
+        flex: 1,
+        backgroundColor: "black"
+    },
     scrollContainer: {
         backgroundColor: "black"
     },
@@ -25,8 +29,7 @@ const styles = StyleSheet.create({
     headerText: {
         color: "white",
         fontSize: 18,
-        fontWeight: "600",
-        marginTop: 10
+        fontWeight: "600"
     },
     searchPeopleContainer: {
         flexDirection: "row",
