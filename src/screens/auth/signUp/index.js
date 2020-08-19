@@ -10,14 +10,20 @@ import {
   StatusBar,
   SafeAreaView,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+
+import {connect} from 'react-redux';
 import api from '../../../server';
+
+import {userDetails} from '../../../redux/actions';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {validateEmail, formatPresentDate} from '../../../utils';
 import styles from './styles';
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -112,8 +118,7 @@ export default class SignUp extends React.Component {
       });
 
       const res = await api.post('/user_signup', data, headers);
-      console.log(JSON.stringify(res));
-
+      console.log(JSON.stringify({a: res.data.userinfo}));
       switch (res.data.status) {
         case 601:
           Alert.alert(
@@ -153,7 +158,7 @@ export default class SignUp extends React.Component {
     const success = await this.filterAndSendData();
     if (success) {
       this.props.navigation.navigate('CreateAccount', {
-        userID: success.userinfo.userID,
+        userDetails: success.userinfo,
       });
     }
   }
@@ -232,7 +237,10 @@ export default class SignUp extends React.Component {
                   colors={['#ed733d', '#ea465b', '#db3022']}
                   style={styles.button}>
                   {this.state.loading ? (
-                    <Text style={styles.buttonText}>SIGN UP.....</Text>
+                    <View style={styles.loadButton}>
+                      <Text style={styles.buttonText}>SIGN UP</Text>
+                      <ActivityIndicator size="small" color="#fff" />
+                    </View>
                   ) : (
                     <Text style={styles.buttonText}>SIGN UP</Text>
                   )}
@@ -261,3 +269,11 @@ export default class SignUp extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps, {userDetails})(SignUp);

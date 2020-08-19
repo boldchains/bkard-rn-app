@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  Pressable,
   TextInput,
   TouchableOpacity,
   ScrollView,
@@ -12,15 +11,20 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {connect} from 'react-redux';
 //import Icon from 'react-native-vector-icons/Ionicons'
 
 import styles from './styles';
 import {validateEmail} from '../../../utils';
+
+import {userDetails} from '../../../redux/actions';
+
 import api from '../../../server';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,6 +35,10 @@ export default class Login extends React.Component {
     };
 
     this.login = this.login.bind(this);
+
+    console.log({
+      a: this.props.auth,
+    });
   }
 
   clearInput = () => {
@@ -81,11 +89,7 @@ export default class Login extends React.Component {
 
       const res = await api.post('/user_login', data, headers);
 
-      console.log({
-        email,
-        password,
-        st: res.status,
-      });
+      this.props.userDetails(res.data.userinfo);
 
       switch (res.data.status) {
         case 602:
@@ -182,7 +186,10 @@ export default class Login extends React.Component {
                   colors={['#ed733d', '#ea465b', '#db3022']}
                   style={styles.button}>
                   {this.state.loading ? (
-                    <Text style={styles.buttonText}>LOGIN.....</Text>
+                    <View style={styles.loadButton}>
+                      <Text style={styles.buttonText}>LOGIN</Text>
+                      <ActivityIndicator size="small" color="#fff" />
+                    </View>
                   ) : (
                     <Text style={styles.buttonText}>LOGIN</Text>
                   )}
@@ -211,3 +218,11 @@ export default class Login extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps, {userDetails})(Login);

@@ -11,17 +11,19 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import {connect} from 'react-redux';
 import api from '../../../server';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import ImageResizer from 'react-native-image-resizer';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import styles from './styles';
+import {userRole, userDetails} from '../../../redux/actions';
 
-export default class CreateAccount extends React.Component {
+class CreateAccount extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,11 +44,11 @@ export default class CreateAccount extends React.Component {
   }
 
   updateProfile = async () => {
+    this.setState({
+      loading: true,
+    });
     const data = this.createData();
     const sent = await this.sendData(data);
-    console.log({
-      sent,
-    });
     if (sent) {
       this.setState({
         loading: false,
@@ -67,7 +69,7 @@ export default class CreateAccount extends React.Component {
         pickdate,
       } = this.state;
 
-      data.append('userID', this.props.route.params.userID);
+      data.append('userID', this.props.route.params.userDetails.userID);
       username && data.append('username', username);
       address && data.append('address', address);
       phoneNumber && data.append('phonenumber', phoneNumber);
@@ -115,6 +117,8 @@ export default class CreateAccount extends React.Component {
           data,
         }),
       );
+
+      this.props.userDetails(res.data.userinfo);
 
       if (res.data.status === 200) {
         Alert.alert('Success', 'Profile has been Successfully Updated');
@@ -292,7 +296,10 @@ export default class CreateAccount extends React.Component {
                   colors={['#ed733d', '#ea465b', '#db3022']}
                   style={styles.button}>
                   {this.state.loading ? (
-                    <Text style={styles.buttonText}>SAVE....</Text>
+                    <View style={styles.loadButton}>
+                      <Text style={styles.buttonText}> SAVE </Text>
+                      <ActivityIndicator size="small" color="#fff" />
+                    </View>
                   ) : (
                     <Text style={styles.buttonText}>SAVE</Text>
                   )}
@@ -305,3 +312,11 @@ export default class CreateAccount extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps, {userRole, userDetails})(CreateAccount);
