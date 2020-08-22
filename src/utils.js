@@ -61,9 +61,10 @@ export class timeWork {
 export const validateEmail = (email) =>
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
 
+export const padDateValue = (value) => ('0' + value).slice(-2);
+
 export const formatPresentDate = () => {
   const dateObj = new Date();
-  const padDateValue = (value) => ('0' + value).slice(-2);
   let formattedDate = `${dateObj.getUTCFullYear()}:${padDateValue(
     dateObj.getUTCMonth() + 1,
   )}:${padDateValue(dateObj.getUTCDate())} ${padDateValue(

@@ -22,6 +22,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import {userRole, userDetails} from '../../../redux/actions';
+import {padDateValue} from '../../../utils';
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -158,9 +159,11 @@ class CreateAccount extends React.Component {
 
   parseDate = (separateBy) =>
     this.state.pickdate
-      ? `${this.state.date.getDate()}${separateBy}${
-          this.state.date.getMonth() + 1
-        }${separateBy}${this.state.date.getFullYear()}`
+      ? `${padDateValue(
+          this.state.date.getMonth() + 1,
+        )}${separateBy}${padDateValue(
+          this.state.date.getDate(),
+        )}${separateBy}${this.state.date.getFullYear()}`
       : 'Birthday';
 
   pickImage = () => {
