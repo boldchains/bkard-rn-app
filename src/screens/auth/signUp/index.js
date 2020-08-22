@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   Platform,
   ActivityIndicator,
+  ToastAndroid,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -154,12 +155,21 @@ class SignUp extends React.Component {
     }
   }
 
+  welcome() {
+    ToastAndroid.showWithGravity(
+      'Welcome to Black Kardd',
+      ToastAndroid.SHORT,
+      ToastAndroid.CENTER,
+    );
+  }
+
   async register() {
     const success = await this.filterAndSendData();
     if (success) {
       this.props.navigation.navigate('CreateAccount', {
         userDetails: success.userinfo,
       });
+      this.welcome();
     }
   }
 

@@ -12,6 +12,7 @@ import {
   Platform,
   Alert,
   ActivityIndicator,
+  ToastAndroid,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from 'react-redux';
@@ -132,11 +133,20 @@ class Login extends React.Component {
     }
   }
 
+  welcome() {
+    ToastAndroid.showWithGravity(
+      'Welcome back to Black Kardd',
+      ToastAndroid.SHORT,
+      ToastAndroid.CENTER,
+    );
+  }
+
   async login() {
     const {email, password} = this.state;
     const success = await this.filterAndSendData(email, password);
     if (success) {
       this.props.navigation.navigate('User');
+      this.welcome();
     }
   }
 
