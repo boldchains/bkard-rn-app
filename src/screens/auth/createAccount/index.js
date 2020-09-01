@@ -11,12 +11,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  Modal,
   ActivityIndicator,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import {connect} from 'react-redux';
 import api from '../../../server';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import Toast from 'react-native-simple-toast';
 import ImageResizer from 'react-native-image-resizer';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -122,7 +124,7 @@ class CreateAccount extends React.Component {
       this.props.userDetails(res.data.userinfo);
 
       if (res.data.status === 200) {
-        Alert.alert('Success', 'Profile has been Successfully Updated');
+        Toast.show('Welcome to Black Kardd');
         return true;
       }
 
@@ -148,7 +150,8 @@ class CreateAccount extends React.Component {
         selectedDate.getMonth(),
         selectedDate.getDate(),
       );
-      this.setState({date: selectedDate, pickdate: true, datePicker: false});
+      this.setState({date: selectedDate, pickdate: true });
+      Platform.OS !== 'ios' && this.setState({datePicker : false});
     } else {
       console.log('nismo izabrali datum rodjenja! ', selectedDate);
     }
@@ -230,18 +233,55 @@ class CreateAccount extends React.Component {
                 </View>
                 <Text style={styles.headerText}>Create Account</Text>
               </View>
-              {this.state.datePicker ? (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={this.state.date}
-                  mode={'date'}
-                  is24Hour={true}
-                  display="default"
-                  onChange={(event, selectedDate) =>
-                    this.onChange(event, selectedDate)
-                  }
-                />
-              ) : null}
+              {Platform.OS === 'ios' ? (
+                  <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={this.state.datePicker}
+                    style={styles.modal}>
+                    <View
+                      style={styles.modalContent}>
+                      <View style={{width: '100%'}}>
+                        <DateTimePicker
+                          testID="dateTimePicker"
+                          value={this.state.date}
+                          mode={'date'}
+                          is24Hour={true}
+                          display="default"
+                          onChange={(event, selectedDate) =>
+                            this.onChange(event, selectedDate)
+                          }
+                          style={{ backgroundColor: "white" }}
+                        />
+                        <TouchableOpacity
+                          onPress={(e) => {
+                            this.setState({datePicker: false})
+                          }}
+                          style={{width: '30%', height: 20}}>
+                          <LinearGradient
+                            start={{x: 0, y: 0}}
+                            end={{x: 1, y: 0}}
+                            colors={['#ed733d', '#ea465b', '#db3022']}
+                            style={styles.button}>
+                              <Text style={styles.buttonText}>PICK DATE</Text>
+                          </LinearGradient>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </Modal>
+                ) : (
+                  this.state.datePicker && (<DateTimePicker
+                    testID="dateTimePicker"
+                    value={this.state.date}
+                    mode={'date'}
+                    is24Hour={true}
+                    display="default"
+                    onChange={(event, selectedDate) =>
+                      this.onChange(event, selectedDate)
+                    }
+                  />)
+                )
+              }
 
               {this.state.imageDetails === '' ? (
                 <View>
@@ -288,7 +328,7 @@ class CreateAccount extends React.Component {
               <TouchableOpacity
                 onPress={() => this.setState({datePicker: true})}
                 style={styles.birtdateInput}>
-                <Text style={styles.birthdateText}>{this.parseDate('-')}</Text>
+                <Text style={styles.birthdateText}>{this.parseDate('/')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={this.updateProfile}

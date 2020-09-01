@@ -14,6 +14,7 @@ import {
   ToastAndroid,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Toast from 'react-native-simple-toast';
 
 import {connect} from 'react-redux';
 import api from '../../../server';
@@ -133,6 +134,7 @@ class SignUp extends React.Component {
           break;
 
         case 200:
+          Toast.show('You registered successfully. Please complete your profile.');
           this.clearInput();
           break;
 

@@ -49,9 +49,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatar: {
-    width: 160,
-    height: 160,
-    borderRadius: 80,
+    width: 128,
+    height: 128,
+    marginTop: 15,
+    borderRadius: 64,
   },
   logo: {
     width: 213,
@@ -130,6 +131,19 @@ const styles = StyleSheet.create({
   birthdateText: {
     color: 'white',
     fontSize: 17,
+  },
+  modal: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#000000',
+    padding: 100
+  },
+  modalContent: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    paddingHorizontal: 20,
   },
   loadButton: {
     flexDirection: 'row',
