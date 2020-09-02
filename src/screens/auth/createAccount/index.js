@@ -77,15 +77,11 @@ class CreateAccount extends React.Component {
       address && data.append('address', address);
       phoneNumber && data.append('phonenumber', phoneNumber);
       pickdate && data.append('birthdate', this.parseDate('/'));
-      console.log({
+      console.log('image details:', {
         imageDetails,
       });
       photoChanged &&
-        data.append('photo', {
-          uri: imageDetails.uri,
-          type: imageDetails.type,
-          name: imageDetails.name,
-        });
+        data.append('photo', imageDetails);
 
       return data;
     } catch (err) {
@@ -188,15 +184,10 @@ class CreateAccount extends React.Component {
       } else {
         ImageResizer.createResizedImage(response.uri, 500, 500, 'JPEG', 100)
           .then((resizedResponse) => {
-            console.log({resizedResponse});
-            console.log({
-              uri: resizedResponse.uri,
-              type: response.type,
-              name: resizedResponse.name,
-            });
+            const url = Platform.OS === "android" ? resizedResponse.uri : resizedResponse.uri.replace("file://", "");
             this.setState({
               imageDetails: {
-                uri: resizedResponse.uri,
+                uri: url,
                 type: response.type,
                 name: resizedResponse.name,
               },

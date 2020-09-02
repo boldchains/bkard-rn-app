@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "generate-apk": "cd android && gradlew clean && gradlew assembleRelease"
+    "generate-apk": "cd android && gradlew clean && gradlew assembleRelease",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@react-native-community/cli-platform-ios": "^4.10.1",
@@ -18,6 +19,8 @@
     "@react-navigation/stack": "^5.7.0",
     "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.19.2",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "react": "16.13.1",
     "react-native": "0.63.0",
     "react-native-elements": "^2.0.4",
